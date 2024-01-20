@@ -1,6 +1,6 @@
 ﻿namespace Tandem.Api.Cores;
 
-public class GroupTypes
+public class GroupType
 {
     public int Id { get; set; }
 
