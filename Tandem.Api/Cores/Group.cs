@@ -6,6 +6,9 @@ public class Group
     public int StudentId { get; set; }
     public string? Title { get; set; }
 
+    public Student Student { get; set; }
+
+    
     public ICollection<SubGroup> SubGroups { get; set; }
     public ICollection<LearnGroup> LearnGroups { get; set; }
 }

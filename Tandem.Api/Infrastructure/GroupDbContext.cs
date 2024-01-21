@@ -13,6 +13,11 @@ public class GroupDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Group>()
+            .HasOne(s => s.Student)
+            .WithMany(g => g.Groups)
+            .HasForeignKey(k => k.StudentId);
+        
         modelBuilder.Entity<SubGroup>()
             .HasKey(sg => sg.Id);
 
