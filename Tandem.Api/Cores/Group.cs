@@ -5,4 +5,6 @@ public class Group
     public int Id { get; set; }
     public int StudentId { get; set; }
     public string? Title { get; set; }
+
+    public ICollection<Group> Groups { get; set; }
 }
