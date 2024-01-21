@@ -60,6 +60,10 @@ public class GroupDbContext : DbContext
             .HasOne(s => s.Student)
             .WithMany(sg => sg.AcademicGroups)
             .HasForeignKey(k => k.StudentId);
+
+        modelBuilder.Entity<AcademicGroup>()
+            .HasIndex(k => new { k.GroupId, k.StudentId })
+            .IsUnique();
         
         
         base.OnModelCreating(modelBuilder);

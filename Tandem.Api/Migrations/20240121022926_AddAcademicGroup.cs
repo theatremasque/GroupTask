@@ -11,18 +11,6 @@ namespace Tandem.Api.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Groups_Students_StudentId",
-                table: "Groups");
-
-            migrationBuilder.DropIndex(
-                name: "IX_Groups_StudentId",
-                table: "Groups");
-
-            migrationBuilder.DropColumn(
-                name: "StudentId",
-                table: "Groups");
-
             migrationBuilder.CreateTable(
                 name: "AcademicGroups",
                 columns: table => new
@@ -66,24 +54,6 @@ namespace Tandem.Api.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AcademicGroups");
-
-            migrationBuilder.AddColumn<int>(
-                name: "StudentId",
-                table: "Groups",
-                type: "integer",
-                nullable: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Groups_StudentId",
-                table: "Groups",
-                column: "StudentId");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Groups_Students_StudentId",
-                table: "Groups",
-                column: "StudentId",
-                principalTable: "Students",
-                principalColumn: "Id");
         }
     }
 }
