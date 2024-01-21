@@ -69,21 +69,22 @@ public class GroupController : ControllerBase
 
         var mergedGroups = subGroups
                 .Concat(learnGroups)
+                .GroupBy(g => g.Key)
                 .ToDictionary(k => 
                     k.Key, 
-                    values => values.Value
+                    values => values.SelectMany(e => e.Value)
+                        .ToArray()
                 );
         
         var academicGroup = await _ctx.AcademicGroups
                 .Where(s => s.StudentId == studentId)
                 .Select(t => t.Title)
                 .SingleAsync();
-
-        if (mergedGroups.ContainsKey(studentId))
-        {
-            mergedGroups.Add(studentId, [academicGroup]); 
-        }
         
-        return Ok(mergedGroups);
+        var values = mergedGroups[studentId].Select(s => s).ToList();
+            
+        values.Add(academicGroup);
+        
+        return Ok(values);
     }
 }
