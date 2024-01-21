@@ -6,6 +6,7 @@ public class SubGroup
     public int GroupId { get; set; }
     public int StudentId { get; set; }
 
+    public string? Title { get; set; }
     public Group Group { get; set; }
     public Student Student { get; set; }
 }
