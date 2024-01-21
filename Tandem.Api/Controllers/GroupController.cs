@@ -18,12 +18,12 @@ public class GroupController : ControllerBase
     [HttpGet]
     public async Task<ActionResult> GetAcademicGroupOfStudent(int studentId)
     {
-        var academicGroup = await _ctx.Groups
-            .Where(g => g.StudentId == studentId)
-            .Select(s => s.Title)
-            .SingleAsync();
+        // var academicGroup = await _ctx.Groups
+        //     .Where(g => g.StudentId == studentId)
+        //     .Select(s => s.Title)
+        //     .SingleAsync();
         
-        return Ok(academicGroup);
+        return Ok('o');
     }
 
     [HttpGet]
@@ -74,15 +74,15 @@ public class GroupController : ControllerBase
                     values => values.Value
                 );
         
-        var academicGroup = await _ctx.Groups
-                .Where(s => s.StudentId == studentId)
-                .Select(t => t.Title)
-                .SingleAsync();
+        // var academicGroup = await _ctx.Groups
+        //         .Where(s => s.StudentId == studentId)
+        //         .Select(t => t.Title)
+        //         .SingleAsync();
 
-        if (mergedGroups.ContainsKey(studentId))
-        {
-            mergedGroups.Add(studentId, [academicGroup]); 
-        }
+        // if (mergedGroups.ContainsKey(studentId))
+        // {
+        //     mergedGroups.Add(studentId, [academicGroup]); 
+        // }
         
         return Ok(mergedGroups);
     }

@@ -3,12 +3,9 @@
 public class Group
 {
     public int Id { get; set; }
-    public int StudentId { get; set; }
     public string? Title { get; set; }
 
-    public Student Student { get; set; }
-
-    
+    public AcademicGroupStudent AcademicGroupStudent { get; set; }
     public ICollection<SubGroup> SubGroups { get; set; }
     public ICollection<LearnGroup> LearnGroups { get; set; }
 }
