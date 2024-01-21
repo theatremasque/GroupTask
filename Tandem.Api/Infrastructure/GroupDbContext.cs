@@ -9,6 +9,7 @@ public class GroupDbContext : DbContext
     public DbSet<Group> Groups { get; set; }
     public DbSet<SubGroup> SubGroups { get; set; }
     public DbSet<LearnGroup> LearnGroups { get; set; }
+    public DbSet<AcademicGroup> AcademicGroups { get; set; }
     public GroupDbContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,7 +22,6 @@ public class GroupDbContext : DbContext
             .WithMany(sg => sg.SubGroups)
             .HasForeignKey(k => k.StudentId);
         
-        
         modelBuilder.Entity<SubGroup>()
             .HasKey(sg => sg.Id);
 
@@ -46,6 +46,19 @@ public class GroupDbContext : DbContext
         modelBuilder.Entity<LearnGroup>()
             .HasOne(s => s.Student)
             .WithMany(sg => sg.LearnGroups)
+            .HasForeignKey(k => k.StudentId);
+        
+        modelBuilder.Entity<AcademicGroup>()
+            .HasKey(sg => sg.Id);
+
+        modelBuilder.Entity<AcademicGroup>()
+            .HasOne(g => g.Group)
+            .WithMany(sg => sg.AcademicGroups)
+            .HasForeignKey(k => k.GroupId);
+
+        modelBuilder.Entity<AcademicGroup>()
+            .HasOne(s => s.Student)
+            .WithMany(sg => sg.AcademicGroups)
             .HasForeignKey(k => k.StudentId);
         
         
