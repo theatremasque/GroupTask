@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Tandem.Api.Infrastructure;
@@ -11,9 +12,11 @@ using Tandem.Api.Infrastructure;
 namespace Tandem.Api.Migrations
 {
     [DbContext(typeof(GroupDbContext))]
-    partial class GroupDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240121020738_AddReferencesTest")]
+    partial class AddReferencesTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,6 +24,25 @@ namespace Tandem.Api.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Tandem.Api.Cores.AcademicGroupStudent", b =>
+                {
+                    b.Property<int>("GroupId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("GroupId", "StudentId");
+
+                    b.HasIndex("GroupId")
+                        .IsUnique();
+
+                    b.HasIndex("StudentId")
+                        .IsUnique();
+
+                    b.ToTable("AcademicGroupStudents");
+                });
 
             modelBuilder.Entity("Tandem.Api.Cores.Group", b =>
                 {
@@ -111,6 +133,25 @@ namespace Tandem.Api.Migrations
                     b.ToTable("SubGroups");
                 });
 
+            modelBuilder.Entity("Tandem.Api.Cores.AcademicGroupStudent", b =>
+                {
+                    b.HasOne("Tandem.Api.Cores.Group", "Group")
+                        .WithOne("AcademicGroupStudent")
+                        .HasForeignKey("Tandem.Api.Cores.AcademicGroupStudent", "GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Tandem.Api.Cores.Student", "Student")
+                        .WithOne("AcademicGroupStudent")
+                        .HasForeignKey("Tandem.Api.Cores.AcademicGroupStudent", "StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Student");
+                });
+
             modelBuilder.Entity("Tandem.Api.Cores.Group", b =>
                 {
                     b.HasOne("Tandem.Api.Cores.Student", null)
@@ -158,6 +199,9 @@ namespace Tandem.Api.Migrations
 
             modelBuilder.Entity("Tandem.Api.Cores.Group", b =>
                 {
+                    b.Navigation("AcademicGroupStudent")
+                        .IsRequired();
+
                     b.Navigation("LearnGroups");
 
                     b.Navigation("SubGroups");
@@ -165,6 +209,9 @@ namespace Tandem.Api.Migrations
 
             modelBuilder.Entity("Tandem.Api.Cores.Student", b =>
                 {
+                    b.Navigation("AcademicGroupStudent")
+                        .IsRequired();
+
                     b.Navigation("Groups");
 
                     b.Navigation("LearnGroups");

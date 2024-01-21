@@ -9,24 +9,13 @@ public class GroupDbContext : DbContext
     public DbSet<Group> Groups { get; set; }
     public DbSet<SubGroup> SubGroups { get; set; }
     public DbSet<LearnGroup> LearnGroups { get; set; }
-    public DbSet<AcademicGroupStudent> AcademicGroupStudents { get; set; }
     public GroupDbContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<AcademicGroupStudent>()
-            .HasKey(k => new { k.GroupId, k.StudentId });
+        modelBuilder.Entity<Group>()
+            .HasKey(s => s.Id);
         
-        modelBuilder.Entity<AcademicGroupStudent>()
-            .HasOne(a => a.Student)
-            .WithOne(s => s.AcademicGroupStudent)
-            .HasForeignKey<AcademicGroupStudent>(k => k.StudentId);
-
-        modelBuilder.Entity<AcademicGroupStudent>()
-            .HasOne(a => a.Group)
-            .WithOne(g => g.AcademicGroupStudent)
-            .HasForeignKey<AcademicGroupStudent>(k => k.GroupId);
-
         modelBuilder.Entity<SubGroup>()
             .HasOne(s => s.Student)
             .WithMany(sg => sg.SubGroups)
