@@ -62,7 +62,7 @@ public class GroupDbContext : DbContext
             .HasForeignKey(k => k.StudentId);
 
         modelBuilder.Entity<AcademicGroup>()
-            .HasIndex(k => new { k.GroupId, k.StudentId })
+            .HasIndex(k => k.StudentId)
             .IsUnique();
         
         
