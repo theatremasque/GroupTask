@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Tandem.Api.Cores;
+using Tandem.Api.Core;
 
 namespace Tandem.Api.Infrastructure;
 

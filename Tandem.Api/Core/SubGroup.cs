@@ -1,4 +1,4 @@
-﻿namespace Tandem.Api.Cores;
+﻿namespace Tandem.Api.Core;
 
 public class SubGroup
 {
