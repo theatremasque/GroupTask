@@ -10,7 +10,7 @@ using Tandem.Api.Infrastructure;
 
 namespace Tandem.Api.Migrations
 {
-    [DbContext(typeof(GroupDbContext))]
+    [DbContext(typeof(TandemDbContext))]
     [Migration("20240121023451_AddAcademicGroupIndex")]
     partial class AddAcademicGroupIndex
     {

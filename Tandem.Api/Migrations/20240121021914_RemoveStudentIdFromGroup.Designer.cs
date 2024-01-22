@@ -11,7 +11,7 @@ using Tandem.Api.Infrastructure;
 
 namespace Tandem.Api.Migrations
 {
-    [DbContext(typeof(GroupDbContext))]
+    [DbContext(typeof(TandemDbContext))]
     [Migration("20240121021914_RemoveStudentIdFromGroup")]
     partial class RemoveStudentIdFromGroup
     {

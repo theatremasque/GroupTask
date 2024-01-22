@@ -11,7 +11,7 @@ using Tandem.Api.Infrastructure;
 
 namespace Tandem.Api.Migrations
 {
-    [DbContext(typeof(GroupDbContext))]
+    [DbContext(typeof(TandemDbContext))]
     [Migration("20240121021616_RemoveConcatEntity")]
     partial class RemoveConcatEntity
     {

@@ -8,9 +8,9 @@ namespace Tandem.Api.Controllers;
 [Route("[controller]/[action]")]
 public class GroupController : ControllerBase
 {
-    private readonly GroupDbContext _ctx;
+    private readonly TandemDbContext _ctx;
 
-    public GroupController(GroupDbContext ctx)
+    public GroupController(TandemDbContext ctx)
     {
         _ctx = ctx;
     }

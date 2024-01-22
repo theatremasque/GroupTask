@@ -3,7 +3,7 @@ using Tandem.Api.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<GroupDbContext>(opt => 
+builder.Services.AddDbContext<TandemDbContext>(opt => 
     opt.UseNpgsql(builder.Configuration.GetConnectionString("GroupDb")));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
