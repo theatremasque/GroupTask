@@ -46,7 +46,7 @@ namespace Tandem.Api.Migrations
                     b.HasIndex("StudentId")
                         .IsUnique();
 
-                    b.ToTable("AcademicGroups");
+                    b.ToTable("AcademicGroups", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.Blog", b =>
@@ -66,7 +66,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasKey("BlogId");
 
-                    b.ToTable("Blogs");
+                    b.ToTable("Blogs", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.Comment", b =>
@@ -91,7 +91,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasIndex("PostId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.Group", b =>
@@ -107,7 +107,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Groups");
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.LearnGroup", b =>
@@ -133,7 +133,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("LearnGroups");
+                    b.ToTable("LearnGroups", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.Post", b =>
@@ -162,7 +162,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasIndex("BlogId");
 
-                    b.ToTable("Posts");
+                    b.ToTable("Posts", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.Student", b =>
@@ -178,7 +178,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.SubGroup", b =>
@@ -204,7 +204,7 @@ namespace Tandem.Api.Migrations
 
                     b.HasIndex("StudentId");
 
-                    b.ToTable("SubGroups");
+                    b.ToTable("SubGroups", (string)null);
                 });
 
             modelBuilder.Entity("Tandem.Api.Core.AcademicGroup", b =>
