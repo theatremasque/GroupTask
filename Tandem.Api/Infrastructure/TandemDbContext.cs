@@ -14,6 +14,9 @@ public class TandemDbContext : DbContext
     public DbSet<SubGroup> SubGroups { get; set; }
     public DbSet<LearnGroup> LearnGroups { get; set; }
     public DbSet<AcademicGroup> AcademicGroups { get; set; }
+    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Post> Posts { get; set; }
+    public DbSet<Comment> Comments { get; set; }
     public TandemDbContext(DbContextOptions options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
