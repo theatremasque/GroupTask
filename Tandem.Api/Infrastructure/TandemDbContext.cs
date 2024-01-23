@@ -32,7 +32,7 @@ public class TandemDbContext : DbContext
         modelBuilder.HasDbFunction(typeof(TandemDbContext)
             .GetMethod(nameof(ActivePostCountForBlog),
                 new[] { typeof(int) }))
-            .HasName("CommentedPostCountForBlog");
+            .HasName("commentedpostcountforblog");
         
         
         modelBuilder.Entity<SubGroup>()
