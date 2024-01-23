@@ -26,10 +26,10 @@ public class TandemDbContext : DbContext
             .HasMany(p => p.Comments)
             .WithOne(c => c.Post);
 
-        // modelBuilder.HasDbFunction(typeof(TandemDbContext)
-        //     .GetMethod(nameof(ActivePostCountForBlog),
-        //         new[] { typeof(int) }))
-        //     .HasName("CommentedPostCountForBlog");
+        modelBuilder.HasDbFunction(typeof(TandemDbContext)
+            .GetMethod(nameof(ActivePostCountForBlog),
+                new[] { typeof(int) }))
+            .HasName("CommentedPostCountForBlog");
         
         
         modelBuilder.Entity<SubGroup>()
